@@ -1,0 +1,6 @@
+service:
+  info: "Order Service Production Environment"
+  tag: order-service-prod
+  version: 1.0.0
+server:
+  port: 8085

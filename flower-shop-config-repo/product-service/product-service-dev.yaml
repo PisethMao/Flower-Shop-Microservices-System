@@ -1,0 +1,6 @@
+service:
+  info: "Product Service Dev Environment"
+  tag: product-service-dev
+  version: 1.0.0
+server:
+  port: 8082

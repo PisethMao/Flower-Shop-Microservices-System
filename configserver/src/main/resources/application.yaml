@@ -3,8 +3,12 @@ server:
 spring:
   application:
     name: config-server
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: file:///D:/config-repos/flower-shop-config-repo
+        native:
+          search-locations:
+            - file:D:\ISTAD\Spring Microservices\Flower Shop Microservices System\flower-shop-config-repo\
+            - file:D:\ISTAD\Spring Microservices\Flower Shop Microservices System\flower-shop-config-repo\{application}

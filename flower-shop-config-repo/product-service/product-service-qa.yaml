@@ -1,0 +1,6 @@
+service:
+  info: "Product Service QA Environment"
+  tag: product-service-qa
+  version: 1.0.0
+server:
+  port: 8084

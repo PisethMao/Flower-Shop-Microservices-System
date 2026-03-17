@@ -1,0 +1,4 @@
+service:
+  info: "Flower Shop Config Repo Service"
+  tag: flower-shop-config-repo
+  version: 1.0.0
