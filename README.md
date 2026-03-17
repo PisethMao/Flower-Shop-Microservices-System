@@ -22,6 +22,14 @@ The following tasks have been completed so far:
 
 ---
 
+## Project Setup Diagram
+
+<p align="center">
+  <img src="docs/images/project-setup-diagram.png" alt="Flower Shop Microservices System Setup Diagram" width="900"/>
+</p>
+
+---
+
 ## What Has Been Done
 
 ### 1. Initialize Project
