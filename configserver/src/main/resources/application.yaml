@@ -9,12 +9,12 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/PisethMao/flower-shop-config-repository-microservices.git
-          # username: PisethMao
-          # password: PAT (Personal Access Token)
+          uri: ${GH_URI}
+          # username: ${GH_USER}
+          # password: ${GH_PASSWORD}
           default-label: master
           search-paths: "/**"
         native:
           search-locations:
             - file:D:\ISTAD\Spring Microservices\Flower Shop Microservices System\flower-shop-config-repo\
-            - file:D:\ISTAD\Spring Microservices\Flower Shop Microservices System\flower-shop-config-repo\{application}
+            - file:D:\ISTAD\Spring Microservices\Flower Shop Microservices System\flower-shop-config-repo\{application}\
