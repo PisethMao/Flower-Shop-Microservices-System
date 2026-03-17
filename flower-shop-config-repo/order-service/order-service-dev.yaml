@@ -1,0 +1,6 @@
+service:
+  info: "Order Service Dev Environment"
+  tag: order-service-dev
+  version: 1.0.0
+server:
+  port: 8081

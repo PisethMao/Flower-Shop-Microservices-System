@@ -1,0 +1,6 @@
+service:
+  info: "Order Service QA Environment"
+  tag: order-service-qa
+  version: 1.0.0
+server:
+  port: 8083
