@@ -1,0 +1,9 @@
+service:
+  info: "Order Service Dev Environment"
+  tag: order-service-dev
+  version: 1.0.0
+server:
+  port: 8081
+secret:
+  weak-password: ${WEAK_PASSWORD}
+  strong-password: ${STRONG_PASSWORD}

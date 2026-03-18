@@ -1,0 +1,29 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: git,vault
+  cloud:
+    config:
+      server:
+        vault:
+          host: localhost
+          port: 8201
+          scheme: http
+          authentication: TOKEN
+          token: myrootvaulttoken
+          kv-version: 2
+          backend: secret
+          profile-separator: /
+        git:
+          uri: ${GH_URI}
+          # username: ${GH_USER}
+          # password: ${GH_PASSWORD}
+          default-label: master
+          search-paths: "/**"
+        native:
+          search-locations:
+            - file:D:\ISTAD\Spring Microservices\Flower Shop Microservices System\flower-shop-config-repo\
+            - file:D:\ISTAD\Spring Microservices\Flower Shop Microservices System\flower-shop-config-repo\{application}\

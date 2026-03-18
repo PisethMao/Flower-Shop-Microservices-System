@@ -1,0 +1,6 @@
+service:
+  info: "Product Service Production Environment"
+  tag: product-service-prod
+  version: 1.0.0
+server:
+  port: 8086

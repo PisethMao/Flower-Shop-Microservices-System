@@ -1,0 +1,9 @@
+service:
+  info: "Order Service QA Environment"
+  tag: order-service-qa
+  version: 1.0.0
+server:
+  port: 8083
+secret:
+  weak-password: ${WEAK_PASSWORD}
+  strong-password: ${STRONG_PASSWORD}
