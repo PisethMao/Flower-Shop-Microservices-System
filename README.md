@@ -51,6 +51,14 @@ This project is being built progressively to understand:
   <img src="docs/images/project-setup-diagram.png" alt="Flower Shop Microservices System Setup Diagram" width="900"/>
 </p>
 
+## Updated Architecture Diagram
+
+This diagram shows the system evolution from the earlier setup to the current setup with Docker Compose infrastructure and HashiCorp Vault integration through Spring Cloud Config Server.
+
+<p align="center">
+  <img src="docs/images/project-setup-before-now-diagram.png" alt="Flower Shop Microservices System Before and Now Diagram" width="1000"/>
+</p>
+
 ---
 
 ## Architecture Overview
