@@ -4,3 +4,6 @@ service:
   version: 1.0.0
 server:
   port: 8081
+secret:
+  weak-password: ${WEAK_PASSWORD}
+  strong-password: ${STRONG_PASSWORD}

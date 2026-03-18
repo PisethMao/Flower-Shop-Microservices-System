@@ -4,10 +4,19 @@ spring:
   application:
     name: config-server
   profiles:
-    active: git
+    active: git,vault
   cloud:
     config:
       server:
+        vault:
+          host: localhost
+          port: 8201
+          scheme: http
+          authentication: TOKEN
+          token: myrootvaulttoken
+          kv-version: 2
+          backend: secret
+          profile-separator: /
         git:
           uri: ${GH_URI}
           # username: ${GH_USER}
