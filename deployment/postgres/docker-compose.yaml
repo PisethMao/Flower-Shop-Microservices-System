@@ -1,0 +1,20 @@
+services:
+  itp-postgres:
+    image: postgres:17.9-trixie
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "Piseth1711*#"
+    ports:
+      - "5169:5432"
+    volumes:
+      - ./init_scripts/postgres_init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres-vol:/var/lib/postgresql/data
+    networks:
+      - itp-net
+    restart: unless-stopped
+volumes:
+  postgres-vol:
+networks:
+  itp-net:
+    external: true
