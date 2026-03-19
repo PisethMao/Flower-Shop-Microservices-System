@@ -104,7 +104,7 @@ External repository used to store configuration files for all microservices.
 ## Project Setup Diagram
 
 <p align="center">
-  <img src="docs/images/project-setup-diagram.png" alt="Flower Shop Microservices System Setup Diagram" width="900"/>
+  <img src="docs/images/project-setup-diagram.png" alt="Flower Shop Microservices System Setup Diagram" width="1000"/>
 </p>
 
 ---
@@ -115,6 +115,16 @@ This diagram shows the evolution of the project from the earlier configuration s
 
 <p align="center">
   <img src="docs/images/project-setup-before-now-diagram.png" alt="Flower Shop Microservices System Before and Now Diagram" width="1000"/>
+</p>
+
+---
+
+## Eureka Service Discovery Diagram
+
+This diagram highlights the **Eureka Server** setup in the current stage and shows how microservices register with and discover services through Eureka.
+
+<p align="center">
+  <img src="docs/images/eureka-service-discovery-diagram.png" alt="Eureka Service Discovery Diagram" width="1000"/>
 </p>
 
 ---
