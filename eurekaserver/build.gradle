@@ -23,11 +23,7 @@ ext {
 }
 
 dependencies {
-	// Source: https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:5.0.1'
-	// Source: https://mvnrepository.com/artifact/org.springframework.vault/spring-vault-core
-	implementation 'org.springframework.vault:spring-vault-core:4.1.0-M1'
-	implementation 'org.springframework.cloud:spring-cloud-config-server'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
