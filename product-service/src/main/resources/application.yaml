@@ -5,3 +5,11 @@ spring:
     import: optional:configserver:http://localhost:8888/
 server:
   port: 8082
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: localhost
