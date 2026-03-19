@@ -101,6 +101,24 @@ External repository used to store configuration files for all microservices.
 
 ---
 
+## Project Setup Diagram
+
+<p align="center">
+  <img src="docs/images/project-setup-diagram.png" alt="Flower Shop Microservices System Setup Diagram" width="900"/>
+</p>
+
+---
+
+## Updated Architecture Diagram
+
+This diagram shows the evolution of the project from the earlier configuration setup into the current stage with Docker Compose infrastructure, Vault integration, and Eureka service discovery.
+
+<p align="center">
+  <img src="docs/images/project-setup-before-now-diagram.png" alt="Flower Shop Microservices System Before and Now Diagram" width="1000"/>
+</p>
+
+---
+
 ## Architecture Overview
 
 At the current stage, the system is organized around the following flow:
