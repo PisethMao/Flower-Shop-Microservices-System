@@ -2,14 +2,23 @@
 
 A Spring Boot microservices learning project for building a **Flower Shop System** step by step.
 
-This repository is currently in the **setup and infrastructure stage**.  
-At this point, the project focuses on preparing the core microservices foundation, including:
+This repository is currently in the **foundation and infrastructure setup stage**.  
+The current focus is on preparing the core building blocks of a microservices architecture before implementing full business features.
+
+---
+
+## Overview
+
+This project is designed to help practice how a real microservices system is structured from the beginning, including:
 
 - centralized configuration with **Spring Cloud Config Server**
-- external configuration repository
-- **HashiCorp Vault** integration for secret management
-- Docker Compose setup for supporting services
-- config clients that consume configuration and secrets through Config Server
+- external configuration management with a separate **config repository**
+- secret management using **HashiCorp Vault**
+- service discovery using **Eureka Server**
+- supporting infrastructure with **Docker Compose**
+- configuration sharing across multiple microservices
+
+At this stage, the project includes infrastructure setup and service registration, while business logic will be implemented progressively in later phases.
 
 ---
 
@@ -20,7 +29,7 @@ The following tasks have been completed so far:
 - Initialize project structure
 - Create and configure **Spring Cloud Config Server**
 - Create separate **config repository**
-- Connect Config Server with the external config repository
+- Connect Config Server to the external config repository
 - Move repository URI, username, and password into environment variables
 - Add Docker Compose for **PostgreSQL** and **Kafka**
 - Add Docker Compose YAML file for **HashiCorp Vault**
@@ -29,47 +38,110 @@ The following tasks have been completed so far:
 - Add two microservices:
   - `order-service`
   - `product-service`
+- Configure **Eureka Server**
+- Configure microservices to register with **Eureka**
 
 ---
 
 ## Project Goal
 
-The goal of this project is to practice how a real microservices system is prepared from the beginning, starting with infrastructure and configuration before implementing full business logic.
+The goal of this project is to understand how to build a microservices system in a proper sequence, starting from infrastructure and configuration first.
 
-This project is being built progressively to understand:
+This project is being developed progressively to practice:
 
-- how microservices externalize configuration
-- how secrets should be managed securely
-- how supporting infrastructure can be started with Docker Compose
-- how multiple services can consume configuration consistently
+- externalized configuration management
+- secure secret handling
+- service discovery
+- infrastructure setup with Docker Compose
+- consistent configuration across services
+- preparation for future inter-service communication
 
 ---
 
-## Project Setup Diagram
+## Tech Stack
 
-<p align="center">
-  <img src="docs/images/project-setup-diagram.png" alt="Flower Shop Microservices System Setup Diagram" width="900"/>
-</p>
+### Backend
+- **Java**
+- **Spring Boot**
+- **Spring Cloud Config Server**
+- **Spring Cloud Netflix Eureka**
 
-## Updated Architecture Diagram
+### Secret Management
+- **HashiCorp Vault**
 
-This diagram shows the system evolution from the earlier setup to the current setup with Docker Compose infrastructure and HashiCorp Vault integration through Spring Cloud Config Server.
+### Infrastructure
+- **Docker Compose**
+- **PostgreSQL**
+- **Apache Kafka**
 
-<p align="center">
-  <img src="docs/images/project-setup-before-now-diagram.png" alt="Flower Shop Microservices System Before and Now Diagram" width="1000"/>
-</p>
+### Configuration
+- **External Config Repository**
+- **Environment Variables**
+
+---
+
+## Modules
+
+The project currently contains the following modules:
+
+### `config-server`
+Centralized configuration server responsible for loading configuration from the external config repository and integrating with HashiCorp Vault.
+
+### `eureka-server`
+Service registry used for service discovery between microservices.
+
+### `order-service`
+Microservice client that fetches configuration from Config Server and registers itself with Eureka.
+
+### `product-service`
+Microservice client that fetches configuration from Config Server and registers itself with Eureka.
+
+### `config-repo`
+External repository used to store configuration files for all microservices.
 
 ---
 
 ## Architecture Overview
 
-At the current stage, the project flow is conceptually like this:
+At the current stage, the system is organized around the following flow:
+
+1. **Config Server** reads configuration from the external config repository.
+2. **Vault** provides secret values to Config Server.
+3. **Order Service** and **Product Service** fetch their configuration from Config Server during startup.
+4. Both services register themselves with **Eureka Server**.
+5. Supporting services such as **PostgreSQL** and **Kafka** are prepared with Docker Compose.
+
+---
+
+## Architecture Flow
 
 ```text
-order-service / product-service
-            ↓
-      Spring Cloud Config Server
-            ↓
-   Config Repository + HashiCorp Vault
-            ↓
- PostgreSQL / Kafka / other infrastructure
+                 +----------------------+
+                 |   Config Repository  |
+                 +----------------------+
+                            |
+                            v
+                 +----------------------+
+                 |  Spring Config Server|
+                 +----------------------+
+                            ^
+                            |
+                 +----------------------+
+                 |    HashiCorp Vault   |
+                 +----------------------+
+
+        +------------------+     +------------------+
+        |   order-service  |     |  product-service |
+        +------------------+     +------------------+
+                 |                         |
+                 +-----------+-------------+
+                             |
+                             v
+                    +----------------+
+                    | Eureka Server  |
+                    +----------------+
+
+                    +----------------+
+                    | PostgreSQL     |
+                    | Kafka          |
+                    +----------------+
