@@ -5,6 +5,9 @@
       <module name="configserver" options="-parameters" />
       <module name="configserver.main" options="-parameters" />
       <module name="configserver.test" options="-parameters" />
+      <module name="eurekaserver" options="-parameters" />
+      <module name="eurekaserver.main" options="-parameters" />
+      <module name="eurekaserver.test" options="-parameters" />
       <module name="order-service" options="-parameters" />
       <module name="order-service.main" options="-parameters" />
       <module name="order-service.test" options="-parameters" />
