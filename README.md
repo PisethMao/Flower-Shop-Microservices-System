@@ -58,8 +58,6 @@ This project is being developed progressively to practice:
 
 ---
 
----
-
 ## Extended Progress
 
 The project has now been expanded further with database and change data capture preparation:
