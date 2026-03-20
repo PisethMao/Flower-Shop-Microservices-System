@@ -1,0 +1,20 @@
+name: oracle
+services:
+  oracle:
+    image: container-registry.oracle.com/database/enterprise:latest
+    container_name: oracle
+    ports:
+      - "1522:1521"
+    environment:
+      ORACLE_PWD: Oracle@169
+      ENABLE_ARCHIVELOG: true
+    volumes:
+      #      - ./init_scripts:/opt/oracle/scripts/startup
+      - oracle_data:/opt/oracle/oradata
+    networks:
+      - itp-net
+volumes:
+  oracle_data:
+networks:
+  itp-net:
+    external: true
