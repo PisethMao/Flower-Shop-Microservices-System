@@ -152,6 +152,23 @@ This diagram highlights the **Eureka Server** setup in the current stage and sho
 
 ---
 
+## Oracle and Debezium Infrastructure Diagram
+
+This diagram shows the next infrastructure expansion of the project with **Oracle Database** and **Debezium** added to the architecture.
+
+It highlights how the system is evolving from configuration and service discovery into a broader setup that also prepares for:
+
+- enterprise database usage with **Oracle**
+- database change monitoring with **Debezium**
+- future event streaming through **Kafka**
+- stronger infrastructure support for event-driven microservices
+
+<p align="center">
+  <img src="docs/images/oracle-debezium-infrastructure-diagram.png" alt="Oracle and Debezium Infrastructure Diagram" width="1000"/>
+</p>
+
+---
+
 ## Oracle and Debezium Stage
 
 The project has now been extended beyond basic service registration and centralized configuration.
