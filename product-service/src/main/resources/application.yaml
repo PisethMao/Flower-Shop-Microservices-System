@@ -2,7 +2,7 @@ spring:
   application:
     name: product
   config:
-    import: optional:configserver:http://localhost:8888/
+    import: optional:configserver:http://localhost:8088/
 server:
   port: 8082
 eureka:

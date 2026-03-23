@@ -1,4 +1,57 @@
+name: event-driven-infra
 services:
+  debezium-kafka-connect:
+    build: .
+    image: debezium-kafka-connect
+    container_name: debezium-kafka-connect
+    restart: unless-stopped
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - schema-registry
+    ports:
+      - "8086:8083"
+    environment:
+      GROUP_ID: cdc_connect_group
+      BOOTSTRAP_SERVERS: "PLAINTEXT://kafka-1:9093,PLAINTEXT://kafka-2:9093,PLAINTEXT://kafka-3:9093"
+      CONFIG_STORAGE_TOPIC: "my_connect_configs"
+      OFFSET_STORAGE_TOPIC: "my_connect_offsets"
+      STATUS_STORAGE_TOPIC: "my_connect_statuses"
+      KEY_CONVERTER: "io.confluent.connect.avro.AvroConverter"
+      VALUE_CONVERTER: "io.confluent.connect.avro.AvroConverter"
+      CONFLUENT_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+      CONFLUENT_SCHEMA_REGISTRY_URL_VALUE: "http://schema-registry:8081"
+      CONNECT_REST_ADVERTISED_HOST_NAME: "debezium-kafka-connect"
+      CONNECT_REST_PORT: 8082
+    volumes:
+      - ./secrets:/etc/kafka-connect/secrets
+      - ./config:/etc/kafka-connect/config
+    networks:
+      - itp-net
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:7.9.6
+    container_name: schema-registry
+    restart: unless-stopped
+    ports:
+      - "8084:8081"
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_LISTENERS: "http://0.0.0.0:8081"
+      SCHEMA_REGISTRY_DEBUG: "true"
+      SCHEMA_REGISTRY_KAFKASTORE_TOPIC: "_schemas"
+      SCHEMA_REGISTRY_KAFKASTORE_TOPIC_REPLICATION_FACTOR: 3
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: "PLAINTEXT://kafka-1:9093,PLAINTEXT://kafka-2:9093,PLAINTEXT://kafka-3:9093"
+    volumes:
+      - ./secrets:/etc/schema-registry/secrets
+    networks:
+      - itp-net
+
   kafka-1:
     # image: confluentinc/cp-kafka:7.8.7
     image: apache/kafka:4.2.0
@@ -115,6 +168,8 @@ services:
       - kafka-1
       - kafka-2
       - kafka-3
+      - schema-registry
+      - debezium-kafka-connect
     networks:
       - itp-net
 
@@ -123,6 +178,8 @@ volumes:
   kafka_2_vol:
   kafka_3_vol:
   kafka_ui_data:
+  secrets:
+  config:
 
 networks:
   itp-net:
