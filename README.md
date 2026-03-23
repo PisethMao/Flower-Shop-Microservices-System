@@ -212,6 +212,21 @@ It highlights the current platform flow:
   <img src="docs/images/debezium-schema-registry-diagram.png" alt="Debezium and Schema Registry Integration Diagram" width="1000"/>
 </p>
 
+### PostgreSQL Database Setup Diagram
+
+This diagram shows the infrastructure update completed today, where **PostgreSQL database cluster** is configured as part of the Flower Shop Microservices System.
+
+It highlights the current platform improvement:
+
+- **PostgreSQL cluster** is prepared for stronger database infrastructure
+- database services are organized for better scalability and availability
+- the project continues evolving from basic service setup into a more production-style platform
+- **Config Server**, **Vault**, **Eureka Server**, **Oracle**, **Debezium**, and **Schema Registry** remain part of the overall system foundation
+
+<p align="center">
+  <img src="docs/images/postgresql-database-cluster-diagram.png" alt="PostgreSQL Database Cluster Diagram" width="1000"/>
+</p>
+
 ---
 
 ## Current Learning Stage
