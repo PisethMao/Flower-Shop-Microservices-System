@@ -196,6 +196,22 @@ It highlights how the system is evolving beyond configuration and service discov
   <img src="docs/images/oracle-debezium-infrastructure-diagram.png" alt="Oracle Debezium and Schema Registry Infrastructure Diagram" width="1000"/>
 </p>
 
+## Debezium and Schema Registry Integration Diagram
+
+This diagram shows the infrastructure update completed today, where **Debezium** is configured together with **Schema Registry** in the Flower Shop Microservices System.
+
+It highlights the current platform flow:
+
+- **Oracle Database** acts as the CDC source
+- **Debezium Connector** captures database changes
+- **Apache Kafka** transports CDC events
+- **Schema Registry** manages event schemas
+- **Config Server**, **Vault**, and **Eureka Server** remain part of the core microservices foundation
+
+<p align="center">
+  <img src="docs/images/debezium-schema-registry-diagram.png" alt="Debezium and Schema Registry Integration Diagram" width="1000"/>
+</p>
+
 ---
 
 ## Current Learning Stage
