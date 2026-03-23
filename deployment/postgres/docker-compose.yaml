@@ -1,14 +1,29 @@
+name: postgres
 services:
-  itp-postgres:
-    image: postgres:17.9-trixie
-    container_name: postgres
+  pg-micro-db:
+    image: postgres:14.22-trixie
+    container_name: pg-micro-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "Piseth1711*#"
+    ports:
+      - "5168:5432"
+    volumes:
+      - ./init_scripts/pg-micro-db_init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres-vol:/var/lib/postgresql/data
+    networks:
+      - itp-net
+    restart: unless-stopped
+  pg-iam-db:
+    image: postgres:14.22-trixie
+    container_name: pg-iam-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: "Piseth1711*#"
     ports:
       - "5169:5432"
     volumes:
-      - ./init_scripts/postgres_init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init_scripts/pg-iam-db_init.sql:/docker-entrypoint-initdb.d/init.sql
       - postgres-vol:/var/lib/postgresql/data
     networks:
       - itp-net

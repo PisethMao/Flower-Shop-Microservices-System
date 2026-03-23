@@ -1,0 +1,6 @@
+CREATE DATABASE db_product Owner postgres ENCODING 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;
+CREATE DATABASE db_order Owner postgres ENCODING 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;
+CREATE DATABASE db_customer Owner postgres ENCODING 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;
+CREATE DATABASE db_inventory Owner postgres ENCODING 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;
+CREATE DATABASE db_payment Owner postgres ENCODING 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;
+CREATE DATABASE db_shipping Owner postgres ENCODING 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;
