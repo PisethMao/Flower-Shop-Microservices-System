@@ -53,8 +53,15 @@ The system currently includes:
 - event streaming infrastructure with **Apache Kafka**
 - change data capture with **Debezium**
 - schema management with **Schema Registry**
+- foundational microservices for:
+  - `order-service`
+  - `product-service`
+  - `inventory-service`
+  - `payment-service`
 
 At this stage, the project focuses on platform readiness, configuration flow, service registration, gateway-based access, database preparation, and CDC integration.
+
+The **inventory-service** and **payment-service** have already been added to the project structure, but they currently do **not** contain business logic yet. They are prepared in the same foundational way as the previously added services so the platform can evolve consistently.
 
 ---
 
@@ -72,9 +79,11 @@ The following tasks have been completed so far:
 - Added Docker Compose setup for **HashiCorp Vault**
 - Configured **Config Server** with **Vault**
 - Configured config clients to load secrets from **Vault through Config Server**
-- Added two microservices:
+- Added foundational microservices:
   - `order-service`
   - `product-service`
+  - `inventory-service`
+  - `payment-service`
 - Configured **Eureka Server**
 - Configured microservices to register with **Eureka**
 - Added **API Gateway**
@@ -87,6 +96,9 @@ The following tasks have been completed so far:
 - Configured **Debezium**
 - Configured **Schema Registry**
 - Integrated **Debezium with Schema Registry**
+
+> At the current stage, `inventory-service` and `payment-service` are added as structural microservices only.  
+> They are part of the platform foundation and currently do not contain business logic yet.
 
 ---
 
@@ -160,6 +172,16 @@ Microservice client that loads configuration from Config Server and registers it
 
 ### `product-service`
 Microservice client that loads configuration from Config Server and registers itself with Eureka.
+
+### `inventory-service`
+Microservice client that loads configuration from Config Server and registers itself with Eureka.
+
+At the current stage, this service is added as a foundational microservice only and does not yet contain business logic.
+
+### `payment-service`
+Microservice client that loads configuration from Config Server and registers itself with Eureka.
+
+At the current stage, this service is added as a foundational microservice only and does not yet contain business logic.
 
 ### `config-repo`
 External repository that stores configuration files for all microservices.
@@ -338,7 +360,7 @@ At the current stage, the system follows this general flow:
 
 1. **Config Server** reads configuration from the external config repository.
 2. **Vault** provides secret values to Config Server.
-3. **Order Service**, **Product Service**, and other microservices fetch their configuration from Config Server during startup.
+3. **Order Service**, **Product Service**, **Inventory Service**, **Payment Service**, and other microservices fetch their configuration from Config Server during startup.
 4. Microservices register themselves with **Eureka Server** for service discovery.
 5. **API Gateway** acts as the centralized entry point for external access.
 6. The gateway uses service discovery information to resolve and route requests to the correct microservice.
@@ -373,19 +395,27 @@ At the current stage, the system follows this general flow:
 +-----------+         +----------------+         +------------------+
                                |
                                |------> +------------------+
-                                        |  product-service |
+                               |        | product-service  |
+                               |        +------------------+
+                               |
+                               |------> +------------------+
+                               |        | inventory-service|
+                               |        +------------------+
+                               |
+                               |------> +------------------+
+                                        | payment-service  |
                                         +------------------+
 
-                 +--------------------------------------+
-                 |            Eureka Server             |
-                 +--------------------------------------+
-                    ^               ^               ^
-                    |               |               |
-                    | register      | register      | discover
-                    |               |               |
-          +----------------+  +------------------+  +------------------+
-          |  API Gateway   |  |   order-service  |  |  product-service |
-          +----------------+  +------------------+  +------------------+
+                 +------------------------------------------------------+
+                 |                    Eureka Server                     |
+                 +------------------------------------------------------+
+                    ^               ^               ^               ^               ^
+                    |               |               |               |               |
+                    | register      | register      | register      | register      | discover
+                    |               |               |               |               |
+          +----------------+  +------------------+  +------------------+  +------------------+  +------------------+
+          |  API Gateway   |  |   order-service  |  |  product-service |  | inventory-service|  | payment-service  |
+          +----------------+  +------------------+  +------------------+  +------------------+  +------------------+
 
 
    +-------------------+     +-------------------+     +----------------+
