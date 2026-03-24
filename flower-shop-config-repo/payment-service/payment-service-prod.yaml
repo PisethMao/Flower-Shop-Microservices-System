@@ -1,0 +1,6 @@
+service:
+  info: "Payment Service Production Environment"
+  tag: payment-service-prod
+  version: 1.0.0
+server:
+  port: 8089

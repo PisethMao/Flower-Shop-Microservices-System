@@ -1,0 +1,9 @@
+service:
+  info: "Payment Service QA Environment"
+  tag: payment-service-qa
+  version: 1.0.0
+server:
+  port: 8085
+secret:
+  weak-password: ${WEAK_PASSWORD}
+  strong-password: ${STRONG_PASSWORD}

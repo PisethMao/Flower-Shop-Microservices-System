@@ -1,0 +1,9 @@
+service:
+  info: "Payment Service Dev Environment"
+  tag: payment-service-dev
+  version: 1.0.0
+server:
+  port: 8101
+secret:
+  weak-password: ${WEAK_PASSWORD}
+  strong-password: ${STRONG_PASSWORD}

@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: inventory
+  profiles:
+    active: qa
+  config:
+    import: optional:configserver:http://localhost:8088
+server:
+  port: 8100
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: localhost

@@ -1,0 +1,6 @@
+service:
+  info: "Inventory Service Production Environment"
+  tag: inventory-service-prod
+  version: 1.0.0
+server:
+  port: 8087

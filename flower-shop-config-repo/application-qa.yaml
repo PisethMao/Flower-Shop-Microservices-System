@@ -1,0 +1,4 @@
+services:
+  info: "Flower Shop Config Repo Service QA"
+  tag: flowershop-config-repo-qa
+  version: 1.0.0

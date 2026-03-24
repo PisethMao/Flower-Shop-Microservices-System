@@ -1,0 +1,9 @@
+service:
+  info: "Inventory Service QA Environment"
+  tag: inventory-service-qa
+  version: 1.0.0
+server:
+  port: 8084
+secret:
+  weak-password: ${WEAK_PASSWORD}
+  strong-password: ${STRONG_PASSWORD}

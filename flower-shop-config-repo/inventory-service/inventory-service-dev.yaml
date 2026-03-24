@@ -1,0 +1,9 @@
+service:
+  info: "Inventory Service Dev Environment"
+  tag: inventory-service-dev
+  version: 1.0.0
+server:
+  port: 8083
+secret:
+  weak-password: ${WEAK_PASSWORD}
+  strong-password: ${STRONG_PASSWORD}
